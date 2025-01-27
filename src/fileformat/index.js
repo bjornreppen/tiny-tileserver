@@ -1,7 +1,7 @@
-const MbTilesHandler = require("./mbtiles/");
-const SqliteHandler = require("./sqlite/");
-const FileHandler = require("./file");
-const DirectoryHandler = require("./directory");
+import MbTilesHandler from "./mbtiles/index.js";
+import SqliteHandler from "./sqlite/index.js";
+import FileHandler from "./file.js";
+import DirectoryHandler from "./directory.js";
 
 class MissingHandler {
   load(cursor) {}
@@ -38,4 +38,4 @@ function getTypeFromFileExt(ext) {
   return "file";
 }
 
-module.exports = { load, navigate, getTypeFromFileExt };
+export { load, navigate, getTypeFromFileExt };

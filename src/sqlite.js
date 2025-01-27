@@ -1,5 +1,7 @@
-const log = require("log-less-fancy")();
-const sqlite3 = require("sqlite3");
+import log1 from "log-less-fancy";
+import sqlite3 from "sqlite3";
+
+const log = log1();
 
 // Strip injection unsafe characters from argument
 function safe(arg) {
@@ -22,4 +24,4 @@ function dball(file, sql, args = []) {
   });
 }
 
-module.exports = { safe, dball };
+export { safe, dball };

@@ -1,4 +1,4 @@
-const fileformat = require("../fileformat");
+import { load, navigate, getTypeFromFileExt } from "../fileformat/index.js";
 
 class Index {
   constructor(rootDir) {
@@ -24,7 +24,7 @@ class Index {
     }
 
     while (cursor.pathSegments.length > 0) {
-      await fileformat.navigate(cursor);
+      await navigate(cursor);
       if (cursor.final) break;
       if (cursor.notfound) return null;
     }
@@ -41,8 +41,8 @@ class Index {
   }
 
   async load(cursor) {
-    await fileformat.load(cursor);
+    await load(cursor);
   }
 }
 
-module.exports = Index;
+export default Index;

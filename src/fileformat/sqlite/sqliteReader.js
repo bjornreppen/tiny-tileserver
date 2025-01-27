@@ -1,5 +1,7 @@
-const log = require("log-less-fancy")();
-const { safe, dball } = require("../../sqlite");
+import log1 from "log-less-fancy";
+import { safe, dball } from "../../sqlite.js";
+
+const log = log1();
 
 async function listRows(file, table, fields) {
   const lastField = fields.slice(-1)[0];
@@ -47,4 +49,4 @@ function whereClause(columns, count) {
     .join(" AND ");
 }
 
-module.exports = { listTables, getColumns, listRows, read };
+export { listTables, getColumns, listRows, read };

@@ -1,4 +1,4 @@
-const { readMetadata } = require("./mbtileReader");
+import { readMetadata } from "./mbtileReader.js";
 
 const template = {
   bounds: [0, 0, 180, 85.051129],
@@ -30,4 +30,4 @@ async function tilejson(cursor) {
   cursor.contentType = "application/json";
 }
 
-module.exports = tilejson;
+export default tilejson;

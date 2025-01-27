@@ -1,10 +1,13 @@
-const path = require("path");
-const express = require("express");
-const log = require("log-less-fancy")();
-const minimist = require("minimist");
-const routes = require("./src/routes");
-const Index = require("./src/index/index");
-const pjson = require("./package.json");
+import path  from "path";
+import express  from "express";
+import log1  from "log-less-fancy";
+import minimist  from "minimist";
+import routes  from "./src/routes.js";
+import Index  from "./src/index/index.js";
+import pjson  from "./package.json" assert { type: "json" };
+
+
+const log = log1()
 
 var argv = minimist(process.argv.slice(2), { alias: { p: "port" } });
 if (argv._.length !== 1) {

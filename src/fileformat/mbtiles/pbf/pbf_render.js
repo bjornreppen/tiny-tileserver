@@ -1,4 +1,4 @@
-const { createCanvas } = require("canvas");
+import { createCanvas } from "canvas";
 
 // http://localhost:8000/AO.mbtiles/4/8/3?format=png&border=rgba(128,128,128,0.2)&size=768&font=8px%20Tahoma&fontColor=rgba(0,0,0,0.3)&stroke=rgba(0,0,0,0.4)
 
@@ -103,4 +103,4 @@ function drawGeometry(ctx, type, stroke, geom, scaling) {
   if (type === 3) ctx.fill();
 }
 
-module.exports = render;
+export default render;

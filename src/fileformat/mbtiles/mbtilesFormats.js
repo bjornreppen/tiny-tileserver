@@ -9,8 +9,8 @@ check image format would thus be quite costly.
 Instead we will lazily query the metadata table for each tileset for the format
 and then cache the value for each tile set in memory.
 */
-const { readMetadata } = require("./mbtileReader");
-const getFormat = require("./tileformat");
+import { readMetadata } from "./mbtileReader.js";
+import getFormat from "./tileformat.js";
 
 class MbtilesFormats {
   constructor() {
@@ -33,4 +33,4 @@ class MbtilesFormats {
   }
 }
 
-module.exports = new MbtilesFormats();
+export default new MbtilesFormats();

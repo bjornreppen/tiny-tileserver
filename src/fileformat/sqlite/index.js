@@ -1,13 +1,13 @@
-const reader = require("./sqliteReader");
+import { listTables, getColumns, listRows, read } from "./sqliteReader.js";
 
 const columnsCache = {};
 
-async function getColumns(cursor) {
+async function getColumns2(cursor) {
   const table = cursor.pathSegments[0];
   const key = cursor.physicalDir + ":" + table;
   let value = columnsCache[key];
   if (value) return value;
-  value = await reader.getColumns(cursor.physicalDir, table);
+  value = await getColumns(cursor.physicalDir, table);
   columnsCache[key] = value;
   return value;
 }
@@ -18,23 +18,23 @@ class SqliteHandler {
     if (!cursor.browseFiles && segments.length == 0) return;
     switch (segments.length) {
       case 0:
-        cursor.files = await reader.listTables(cursor.physicalDir);
+        cursor.files = await listTables(cursor.physicalDir);
         cursor.canBrowse = true;
         break;
       case 1:
-        cursor.files = await reader.listRows(
+        cursor.files = await listRows(
           cursor.physicalDir,
           segments[0],
-          await getColumns(cursor)
+          await getColumns2(cursor)
         );
         cursor.canBrowse = true;
         break;
       case 2:
-        const buffer = await reader.read(
+        const buffer = await read(
           cursor.physicalDir,
           segments[0],
           segments.slice(1),
-          await getColumns(cursor)
+          await getColumns2(cursor)
         );
         if (!buffer) return null;
         cursor.contentType = "application/json";
@@ -44,4 +44,4 @@ class SqliteHandler {
   }
 }
 
-module.exports = SqliteHandler;
+export default SqliteHandler;

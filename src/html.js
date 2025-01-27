@@ -1,6 +1,6 @@
-const fs = require("fs");
+import fs from "fs";
 const template = fs.readFileSync("index.html", "utf8");
-var path = require("path");
+import path from "path";
 
 function td(inner) {
   return `<td class="mdl-data-table__cell--non-numeric">${inner}</td>`;
@@ -54,4 +54,4 @@ function browse(node, relativePath) {
   return node;
 }
 
-module.exports = { browse };
+export { browse };

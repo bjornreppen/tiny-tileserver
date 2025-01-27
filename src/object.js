@@ -5,4 +5,4 @@ function toObject(array) {
   }, {});
 }
 
-module.exports = { toObject };
+export { toObject };

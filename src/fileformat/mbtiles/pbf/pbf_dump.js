@@ -1,6 +1,6 @@
-var VectorTile = require("@mapbox/vector-tile").VectorTile;
-var Protobuf = require("pbf");
-var { decompress } = require("./protobuf");
+import { VectorTile } from "@mapbox/vector-tile";
+import Protobuf from "pbf";
+import { decompress } from "./protobuf.js";
 
 function decodePbf(buffer) {
   var tile = new VectorTile(new Protobuf(decompress(buffer)));
@@ -22,4 +22,4 @@ function decodePbf(buffer) {
   return tile;
 }
 
-module.exports = { decodePbf };
+export { decodePbf };

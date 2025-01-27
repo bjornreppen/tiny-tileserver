@@ -1,4 +1,4 @@
-const reader = require("./sqliteReader");
+import reader from "./sqliteReader.js";
 
 test("listTables", () => {
   return reader

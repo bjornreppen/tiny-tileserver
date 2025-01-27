@@ -1,5 +1,5 @@
-const fs = require("fs");
-var path = require("path");
+import fs from "fs";
+import path from "path";
 
 const statFile = path =>
   new Promise((res, rej) => {
@@ -79,4 +79,4 @@ class DirectoryHandler {
   }
 }
 
-module.exports = DirectoryHandler;
+export default DirectoryHandler;

@@ -1,4 +1,6 @@
-const log = require("log-less-fancy")();
+import log1 from "log-less-fancy";
+
+const log = log1();
 
 const formats = {
   pbf: {
@@ -18,4 +20,4 @@ function getFormatSettings(formatstring) {
   return {};
 }
 
-module.exports = getFormatSettings;
+export default getFormatSettings;

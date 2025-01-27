@@ -1,7 +1,7 @@
-const { browse } = require("./html");
-const { getCompression } = require("./fileformat/mbtiles/pbf/protobuf");
+import { browse } from "./html.js";
+import { getCompression } from "./fileformat/mbtiles/pbf/protobuf.js";
 
-module.exports = function(app, index) {
+function routes(app, index) {
   app.get("*?", (req, res, next) => {
     index
       .get(decodeURIComponent(req.path), req.query, req.headers.host)
@@ -19,7 +19,10 @@ module.exports = function(app, index) {
         res.send(node.buffer);
       })
       .catch(err => {
+        throw err;
         next(err);
       });
   });
-};
+}
+
+export default routes;

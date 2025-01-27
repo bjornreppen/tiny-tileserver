@@ -1,4 +1,4 @@
-const mbTileReader = require("./mbtileReader");
+import mbTileReader from "./mbtileReader";
 
 test("readTile", () => {
   return mbTileReader

@@ -1,9 +1,9 @@
-const { readTile, listFiles } = require("./mbtileReader");
-const { toGeoJson } = require("./pbf/protobuf");
-const { decodePbf } = require("./pbf/pbf_dump");
-const tilejson = require("./tilejson");
-const mbtilesFormats = require("./mbtilesFormats");
-const render = require("./pbf/pbf_render");
+import { readTile, listFiles } from "./mbtileReader.js";
+import { toGeoJson } from "./pbf/protobuf.js";
+import { decodePbf } from "./pbf/pbf_dump.js";
+import tilejson from "./tilejson.js";
+import mbtilesFormats from "./mbtilesFormats.js";
+import render from "./pbf/pbf_render.js";
 
 class Index {
   list(cursor, level, fileext, items) {
@@ -95,4 +95,4 @@ class Index {
   }
 }
 
-module.exports = Index;
+export default Index;

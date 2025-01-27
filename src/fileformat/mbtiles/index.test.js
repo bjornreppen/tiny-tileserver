@@ -1,4 +1,4 @@
-const MbTilesHandler = require("./");
+import MbTilesHandler from "./";
 
 const mbtiles = new MbTilesHandler();
 

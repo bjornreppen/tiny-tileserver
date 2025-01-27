@@ -4,4 +4,4 @@ class FileHandler {
   }
 }
 
-module.exports = FileHandler;
+export default FileHandler;

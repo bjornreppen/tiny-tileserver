@@ -1,5 +1,7 @@
-const log = require("log-less-fancy")();
-const { dball } = require("../../sqlite");
+import log1 from "log-less-fancy";
+import { dball } from "../../sqlite.js";
+
+const log = log1();
 
 async function readTile(file, zoom, column, row) {
   let dbRow = Math.pow(2, zoom) - 1 - row;
@@ -7,6 +9,7 @@ async function readTile(file, zoom, column, row) {
   const sql =
     "SELECT tile_data from tiles WHERE zoom_level=? AND tile_column=? AND tile_row=?";
   const records = await dball(file, sql, [zoom, column, dbRow]);
+  console.log({ records });
   if (records.length !== 1) return null;
   const record = records[0];
   return record && record.tile_data;
@@ -29,7 +32,8 @@ async function listFiles(file, filter) {
     1: "SELECT DISTINCT tile_column FROM tiles WHERE zoom_level=?",
     2: "SELECT (2 << zoom_level - 1) - 1 - tile_row AS row, length(tile_data) AS size FROM tiles WHERE zoom_level=? AND tile_column=?"
   };
-  return await dball(file, sql[filter.length], filter);
+  const r = await dball(file, sql[filter.length], filter);
+  return r;
 }
 
-module.exports = { readTile, readMetadata, listFiles };
+export { readTile, readMetadata, listFiles };

@@ -1,4 +1,4 @@
-const getFormatSettings = require("./tileformat");
+import getFormatSettings from "./tileformat";
 
 test("png", () => {
   expect(getFormatSettings("png")).toMatchSnapshot();
